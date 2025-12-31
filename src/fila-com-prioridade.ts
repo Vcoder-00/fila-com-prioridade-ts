@@ -31,7 +31,7 @@ class FilaComPrioridade {
         //flag para controle do loop
         let inserido: boolean = false
         for (let i: number = 0; i < this.armazenamento.length; i += 1) {
-            if (novoElemento.prioridade < this.armazenamento[i]!.prioridade) {
+            if (novoElemento.prioridade > this.armazenamento[i]!.prioridade) {
                 this.armazenamento.splice(i, 0, novoElemento)
                 inserido = true;
                 break;
@@ -70,6 +70,10 @@ class FilaComPrioridade {
         return false;
     }
 
+    esvaziaFila(){
+        this.armazenamento = [];
+    }
+
 
     getCapacidade() {
         return console.log(`Capacidade: ${this.capacidade}`);
@@ -78,8 +82,11 @@ class FilaComPrioridade {
     getEspacoDisponivel() {
         return console.log(`Espaço disponível: ${this.capacidade - this.tamanho()}`);
     }
-}
 
+    getProximoExcluir() {
+        return console.log(`Próximo elemento a ser excluido: ${this.armazenamento[0]}`)}
+ 
+}
 // Teste de funcionamento
 
 let f1 = new FilaComPrioridade(5);
@@ -92,4 +99,6 @@ f1.estaCheia();
 f1.getCapacidade();
 f1.getEspacoDisponivel();
 f1.remover();
+f1.exibirFila();
+f1.esvaziaFila();
 f1.exibirFila();
